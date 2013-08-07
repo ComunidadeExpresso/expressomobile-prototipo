@@ -50,7 +50,7 @@ body #page .main #content .searchArea input { width: 93%; border-radius: 15px 15
 body #page .main #content .searchArea input:focus { border: 1px solid #3A87AD; }
 
 /** Menu **/
-body #menu { width: 50%; height: 100%; position: absolute; margin-top: -53px; background: url("../images/bg.png"); display: none; }
+body #menu { width: 50%; height: 100%; position: absolute; margin-top: -53px; background: url("../images/bg.png"); display: none; z-index: 9999; }
 body #menu.expanded { display: block; }
 body #menu #personalInfo { height: 61px; padding: 10px 10px; border-bottom: 1px solid #2C2C2C }
 body #menu #personalInfo img { float: left; width: 46px; height: 61px; border-radius: 6px 6px 6px 6px}
@@ -118,6 +118,47 @@ body form { font-size: 16px; padding: 15px; }
 	body #page .main dl#credits dd a { color: #777777; }
 	body #page .main dl#credits dd ul { background-color: transparent; }
 	body #page .main dl#credits dd ul li { height: auto; border: 0; line-height: normal; margin: 5px 0; list-style-position: inside; list-style-type: circle; }
+
+/** Contatos **/
+body #page .main dl#contactsList dd ul li { height: 71px; }
+body #page .main dl#contactsList dd ul li a { height: 71px; }
+body #page .main dl#contactsList dd ul li a img { height: 61px; width: 46px; margin-top: 5px; float: left; }
+body #page .main dl#contactsList.personal dd ul li a div.info { margin-left: 61px; }
+body #page .main dl#contactsList dd ul li a div.info span { display: block; line-height: normal; margin-left: 0 }
+body #page .main dl#contactsList dd ul li a div.info span.name { font-size: 14px; padding-top: 18px;  }
+body #page .main dl#contactsList dd ul li a div.info span.email { font-size: 13px; }
+
+	/** Contatos > Detalhes **/
+	body #page .main dl#contactDetails dt { border-bottom: 1px solid #3A87AD; color: #3A87AD; font-size: 16px; font-weight: bold; padding: 10px; margin-top: 1px; background-color: #FFF; }
+	body #page .main dl#contactDetails dd { font-size: 14px; color: #777777; padding: 10px; margin-bottom: 5px;  }
+	body #page .main dl#contactDetails dd a { color: #777777; }
+	body #page .main dl#contactDetails dd ul { background-color: transparent; }
+	body #page .main dl#contactDetails dd ul li { height: auto; border: 0; line-height: normal; margin: 5px 0; list-style-position: inside; list-style-type: circle; }
+
+/** Agenda **/
+body #page .main #agenda .ui-datepicker { font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; width: auto; border: 0; background: #FFFFFF; }
+body #page .main #agenda .ui-datepicker .ui-datepicker-header { border: 0; border-radius: 0; background-color: #3A87AD; height: 50px; line-height: 50px; color: #FFF; }
+body #page .main #agenda .ui-datepicker .ui-datepicker-header a { cursor: pointer; text-align: center; width: 50px; }
+body #page .main #agenda .ui-datepicker .ui-datepicker-header .ui-datepicker-prev { float: left; }
+body #page .main #agenda .ui-datepicker .ui-datepicker-header .ui-datepicker-next { float: right; }
+body #page .main #agenda .ui-datepicker .ui-datepicker-header .ui-datepicker-title { text-align: center }
+body #page .main #agenda .ui-datepicker .ui-datepicker-calendar { width: 100%; margin-right: - }
+body #page .main #agenda .ui-datepicker .ui-datepicker-calendar tr { height: 50px; }
+body #page .main #agenda .ui-datepicker .ui-datepicker-calendar tr td { width: 14%; }
+body #page .main #agenda .ui-datepicker .ui-datepicker-calendar tr td a,
+body #page .main #agenda .ui-datepicker .ui-datepicker-calendar tr td span { height: 50px; text-align: center; line-height: 50px; display: block; text-decoration: none; color: #777777; font-weight: bold; }
+body #page .main #agenda .ui-datepicker .ui-datepicker-calendar tr td.ui-datepicker-today a { color: #FFF; background-color: #3A87AD; }
+body #page .main #agenda .ui-datepicker .ui-datepicker-calendar tr td.ui-datepicker-week-end  a { color: #777777; background-color: #C3C3C3; }
+body #page .main #agenda .ui-datepicker .ui-datepicker-calendar tr td.ui-datepicker-current-day a { background-color: #777777; color: #FFFFFF; }
+body #page .main #agenda .ui-datepicker .ui-datepicker-calendar tr td.ui-datepicker-unselectable span { font-weight: normal; }
+
+	body #page .main #eventsList .noEvent { height: 100px; line-height: 100px; text-align: center; color: #777777; }
+	/*body #page .main dl#credits dt { border-bottom: 1px solid #3A87AD; color: #3A87AD; font-size: 16px; font-weight: bold; padding: 10px; margin-top: 1px; background-color: #FFF; }*/
+	body #page .main dl#events dd { font-size: 14px; color: #777777; padding: 10px; margin-bottom: 5px;  }
+	body #page .main dl#events dd a { color: #777777; }
+	body #page .main dl#events dd ul { background-color: transparent; }
+	body #page .main dl#events dd ul li { height: auto; border: 0; line-height: normal; margin: 5px 0; list-style-position: inside; list-style-type: circle; }
+	
 
 
 /** Pull down styles **/

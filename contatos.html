@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]> <html class="lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if IE 7]> <html class="lt-ie9 lt-ie8" lang="en"> <![endif]-->
+<!--[if IE 8]> <html class="lt-ie9" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!--> <html lang="en"> <!--<![endif]-->
+<html>
+<head>
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+<meta name="author" content="Equipe Expresso Livre" />
+<meta name="keywords" content="rest, json, javascript" />
+<meta name="description" content="" />
+<link rel="stylesheet" type="text/css" href="./css/estilo.css">
+<title>.: Expresso :.</title>
+
+</head>
+<body>
+
+	<!-- menu -->
+	<div id="menu" class="left"></div>
+	<!-- fim menu -->
+
+	<div id="page" class="left">
+
+		<header class="top">
+			
+			<ul class="left topButtons">
+				<li><a href="#" class="menu">Menu</a></li>
+			</ul>	
+			
+			<ul class="right topButtons">
+				<li><a href="#" class="contextMenu">Menu de contexto</a></li>
+			</ul>
+
+			<div id="contextMenu" class="hidden">
+				<ul>
+					<li><a href="./templates/contatos-pessoais.ejs" title="Contatos Pessoais">Contatos Pessoais</a></li>
+					<li><a href="./templates/contatos-catalogo-geral.ejs" title="Catálogo Geral">Catálogo Geral</a></li>
+				</ul>
+			</div>
+
+		</header>
+
+		<div class="main">
+
+			<div id="content" class="left">
+				<h2 id="contentTitle" class="ellipsis50">Contatos Pessoais</h2>
+
+				<div id="wrapper" class="container">
+					<div id="scroller"></div>
+				</div>
+			</div>
+
+			<div id="contentDetail" class="left">
+				<h2 id="contentDetailTitle"></h2>
+				<div id="wrapperDetail" class="container">
+					<div id="scrollerDetail"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<script type="application/javascript" src="./plugins/jquery/jquery-1.9.1.js"></script>
+	<script type="application/javascript" src="./plugins/ejs/ejs.js"></script>
+	<script type="application/javascript" src="./plugins/iscroll/src/iscroll.js"></script>
+	<script type="text/javascript" src="./plugins/dotdotdot/jquery.dotdotdot.js"></script>
+	<script type="application/javascript" src="./js/jquery.touchwipe.min.js"></script>
+	<script type="application/javascript" src="./js/general.js"></script>
+	<script type="text/javascript">
+		jQuery(function($)
+		{
+			$('#menu').html(new EJS({url: './templates/menu.ejs'}).render());
+			$('#scroller').html(new EJS({url: './templates/contatos-pessoais.ejs'}).render());
+			$('#menu #mainMenu li').removeClass('selected');
+			$('#menu #mainMenu li.contacts').addClass('selected');
+
+			$('#contextMenu').on('click', 'a', function () 
+			{
+				$('#scroller').html(new EJS({url: $(this).prop('href')}).render());
+				$('#contentTitle').text($(this).text());
+
+				$('#contactsList').on('click', 'a', function (event)
+				{
+					init($(this), event);
+				});
+
+				$('#contextMenu').addClass('hidden');
+				scrollerRefresh();
+
+				return false;
+			});
+
+			$('#contactsList').on('click', 'a', function (event)
+			{
+				return init($(this), event);
+			});
+
+		});
+
+		function init(obj, event)
+		{
+			event.preventDefault();
+
+			var template = obj.prop('href');
+			var title,
+				panel;
+
+			if ($('body').hasClass('smartphone'))
+			{
+				panel = $('#scroller');
+				title = $('#contentTitle');
+			}
+			else
+			{
+				panel = $('#scrollerDetail');
+				title = $('#contentDetailTitle');
+			}
+
+			panel.html(new EJS({url: template}).render());
+			title.text(obj.find('.name').text());
+			scrollerRefresh();
+
+			return false;
+		}
+
+	</script>
+
+
+
+</body>
+</html>
