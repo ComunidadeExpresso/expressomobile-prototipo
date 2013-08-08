@@ -136,29 +136,63 @@ body #page .main dl#contactsList dd ul li a div.info span.email { font-size: 13p
 	body #page .main dl#contactDetails dd ul li { height: auto; border: 0; line-height: normal; margin: 5px 0; list-style-position: inside; list-style-type: circle; }
 
 /** Agenda **/
-body #page .main #agenda .ui-datepicker { font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; width: auto; border: 0; background: #FFFFFF; }
-body #page .main #agenda .ui-datepicker .ui-datepicker-header { border: 0; border-radius: 0; background-color: #3A87AD; height: 50px; line-height: 50px; color: #FFF; }
+body #page .main #agenda .ui-datepicker { font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; width: auto; border: 0; background: #F1F1F1; }
+body #page .main #agenda .ui-datepicker .ui-datepicker-header { border: 0; border-radius: 0; background-color: #3A87AD; height: 40px; line-height: 40px; color: #FFF; }
 body #page .main #agenda .ui-datepicker .ui-datepicker-header a { cursor: pointer; text-align: center; width: 50px; }
 body #page .main #agenda .ui-datepicker .ui-datepicker-header .ui-datepicker-prev { float: left; }
 body #page .main #agenda .ui-datepicker .ui-datepicker-header .ui-datepicker-next { float: right; }
 body #page .main #agenda .ui-datepicker .ui-datepicker-header .ui-datepicker-title { text-align: center }
-body #page .main #agenda .ui-datepicker .ui-datepicker-calendar { width: 100%; margin-right: - }
-body #page .main #agenda .ui-datepicker .ui-datepicker-calendar tr { height: 50px; }
-body #page .main #agenda .ui-datepicker .ui-datepicker-calendar tr td { width: 14%; }
+body #page .main #agenda .ui-datepicker .ui-datepicker-calendar { width: 100%; background-color: #FFFFFF; border-spacing: 0; }
+body #page .main #agenda .ui-datepicker .ui-datepicker-calendar tr { height: 50px; background-color: #F1F1F1; }
+body #page .main #agenda .ui-datepicker .ui-datepicker-calendar thead tr { height:30px; background-color: #777777; color: #FFF; }
+body #page .main #agenda .ui-datepicker .ui-datepicker-calendar thead tr th { }
+body #page .main #agenda .ui-datepicker .ui-datepicker-calendar thead tr th span { font-weight: normal; font-size: 14px; }
+body #page .main #agenda .ui-datepicker .ui-datepicker-calendar tr td { width: 14%; border: 1px #FFF solid; }
 body #page .main #agenda .ui-datepicker .ui-datepicker-calendar tr td a,
 body #page .main #agenda .ui-datepicker .ui-datepicker-calendar tr td span { height: 50px; text-align: center; line-height: 50px; display: block; text-decoration: none; color: #777777; font-weight: bold; }
 body #page .main #agenda .ui-datepicker .ui-datepicker-calendar tr td.ui-datepicker-today a { color: #FFF; background-color: #3A87AD; }
-body #page .main #agenda .ui-datepicker .ui-datepicker-calendar tr td.ui-datepicker-week-end  a { color: #777777; background-color: #C3C3C3; }
-body #page .main #agenda .ui-datepicker .ui-datepicker-calendar tr td.ui-datepicker-current-day a { background-color: #777777; color: #FFFFFF; }
+body #page .main #agenda .ui-datepicker .ui-datepicker-calendar tr td.ui-datepicker-week-end  a { color: #CC6600; }
+body #page .main #agenda .ui-datepicker .ui-datepicker-calendar tr td.ui-datepicker-current-day { border: 1px #777777 solid; }
 body #page .main #agenda .ui-datepicker .ui-datepicker-calendar tr td.ui-datepicker-unselectable span { font-weight: normal; }
 
+	/** Agenda - Lista resumida **/
 	body #page .main #eventsList .noEvent { height: 100px; line-height: 100px; text-align: center; color: #777777; }
-	/*body #page .main dl#credits dt { border-bottom: 1px solid #3A87AD; color: #3A87AD; font-size: 16px; font-weight: bold; padding: 10px; margin-top: 1px; background-color: #FFF; }*/
-	body #page .main dl#events dd { font-size: 14px; color: #777777; padding: 10px; margin-bottom: 5px;  }
-	body #page .main dl#events dd a { color: #777777; }
-	body #page .main dl#events dd ul { background-color: transparent; }
-	body #page .main dl#events dd ul li { height: auto; border: 0; line-height: normal; margin: 5px 0; list-style-position: inside; list-style-type: circle; }
-	
+	body #page .main ul#events li { border-left: 8px solid #3A87AD; font-size: 16px; height: 60px; background-color: #FFFFFF; }
+	body #page .main ul#events li a { height: 60px; }
+	body #page .main ul#events li a div.hourly { float: left; width: 60px; text-align: center; }
+	body #page .main ul#events li a div.hourly strong { font-weight: bold; color: #3A87AD; display: block; height: 23px; line-height: 23px; font-size: 13px; }
+	body #page .main ul#events li a div.hourly strong.start { margin-top: 7px; }
+	body #page .main ul#events li a span { font-size: 14px; color: #777777; margin-left: 12px; line-height: 60px; }
+	body #page .main ul#events li a span.complete { color: #3A87AD; font-size: 14px; font-weight: bold; }
+
+	/** Agenda - Lista completa **/
+	body #page .main table#eventsTable { width: 100%; font-size: 16px; border-spacing: 0; margin-top: 1px; }
+	body #page .main table#eventsTable tr { height: 60px; }
+	body #page .main table#eventsTable tr td { border-bottom: 1px solid #CCCCCC; border-top: 1px #FFF solid; height: 60px; }
+	body #page .main table#eventsTable tr td.hourly { border-left: 8px solid #3A87AD; color: #3A87AD; width: 60px; font-weight: bold; text-align: center; }
+	body #page .main table#eventsTable tr td.description a { padding: 12px; color: #777777; font-size: 14px; text-decoration: none; display: block; height: 100%; }
+	body #page .main table#eventsTable tr td.busy { background-color: #F1F1F1; }
+
+	/** Agenda - Detalhes do evento **/
+	body #page .main table#eventDetails { width: 100%; font-size: 16px; border-spacing: 0; margin-top: 1px; }
+	body #page .main table#eventDetails tr { height: 60px; }
+	body #page .main table#eventDetails tr td { border-bottom: 1px solid #CCCCCC; border-top: 1px #FFF solid; min-height: 60px; }
+	body #page .main table#eventDetails tr td.item { border-left: 8px solid #3A87AD; color: #3A87AD; width: 120px; font-weight: bold; text-align: left; padding-left: 5px; }
+	body #page .main table#eventDetails tr td.description { padding: 12px; color: #777777; font-size: 14px;}
+	body #page .main table#eventDetails tr td.busy { background-color: #F1F1F1; }
+
+	body form#addEvent { font-size: 16px; padding: 15px; }
+	body form#addEvent ol li { margin: 15px 25px 15px 15px; }
+	body form#addEvent ol li textarea { width: 100%; height: 150px; }
+	body form#addEvent ol li input { width: 100%; height: 30px; padding: 5px; }
+	body form#addEvent ol li select { width: 100%; height: 50px; padding: 10px 5px; }
+	body form#addEvent ol li.date ul li { width: 47%; margin: 0; display: inline; }
+	body form#addEvent ol li ul li input { width: 47%; }
+	body form#addEvent ol li.participants { color: #777777; }
+	body form#addEvent ol li.participants h4 { display: inline; font-weight: bold; }
+	body form#addEvent ol li.participants a { text-decoration: none; margin-left: 10px; color: #3A87AD; }
+	body form#addEvent ol li.participants ul { margin: 10px 0; }
+	body form#addEvent ol li.participants ul li { margin: 3px 0; }
 
 
 /** Pull down styles **/

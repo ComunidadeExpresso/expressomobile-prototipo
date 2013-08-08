@@ -1,0 +1,54 @@
+<form id="addEvent">
+	<ol>
+		<li>
+			<select name="tipo">
+				<option>Tipo</option>
+			</select>
+		</li>
+		<li>
+			<input type="text" name="titulo" id="titulo" placeholder="Título" />
+		</li>
+		<li>
+			<textarea name="descricao" id="descricao" placeholder="Descrição completa"></textarea>
+		</li>
+		<li>
+			<select name="categoria">
+				<option>Categoria</option>
+			</select>
+		</li>
+		<li>
+			<input type="text" name="localizacao" id="localizacao" placeholder="Localização" />
+		</li>
+		<li class="date">
+			<ul>
+				<li><input type="text" name="data_ini" id="data_ini" placeholder="Data inicial" /></li>
+				<li><input type="text" name="hora_ini" id="hora_ini" placeholder="Hora inicial" /></li>
+			</ul>
+		</li>
+
+		<li class="date">
+			<ul>
+				<li><input type="text" name="data_fim" id="data_fim" placeholder="Data final" /></li>
+				<li><input type="text" name="hora_fim" id="hora_fim" placeholder="Hora final" /></li>
+			</ul>
+		</li>
+		<li class="participants">
+			<h4>Participantes:</h4>
+			<a href="#" title="Adicionar participantes">Adicionar participantes</a>
+			<ul>
+				<li><input type="checkbox" name="participantes[]" value="1" checked="checked" /> Alaor</li>
+				<li><input type="checkbox" name="participantes[]" value="2" checked="checked" /> Bastiao</li>
+				<li><input type="checkbox" name="participantes[]" value="3" checked="checked" /> Estevao</li>
+				<li><input type="checkbox" name="participantes[]" value="4" checked="checked" /> Doroteia</li>
+			</ul>
+		</li>
+		<li>
+			<select name="prioridade">
+				<option>Prioridade</option>
+			</select>
+		</li>
+		<li>
+			<textarea name="participantes_externos" id="participantes_externos" placeholder="Participantes externos"></textarea>
+		</li>
+	</ol>
+</form>

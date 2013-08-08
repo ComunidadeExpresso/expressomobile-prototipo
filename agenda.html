@@ -14,7 +14,6 @@
 <meta name="keywords" content="rest, json, javascript" />
 <meta name="description" content="" />
 <link rel="stylesheet" type="text/css" href="./css/estilo.css">
-<!-- <link rel="stylesheet" type="text/css" href="./plugins/jquery-ui-1.10.3.custom/css/overcast/jquery-ui-1.10.3.custom.min.css"> -->
 <title>.: Expresso :.</title>
 
 </head>
@@ -38,8 +37,7 @@
 
 			<div id="contextMenu" class="hidden">
 				<ul>
-					<li><a href="./templates/contatos-pessoais.ejs" title="Contatos Pessoais">Contatos Pessoais</a></li>
-					<li><a href="./templates/contatos-catalogo-geral.ejs" title="Catálogo Geral">Catálogo Geral</a></li>
+					<li><a href="./templates/agenda-formulario.ejs" title="Contatos Pessoais">Adicionar evento</a></li>
 				</ul>
 			</div>
 
@@ -69,100 +67,136 @@
 	<script type="application/javascript" src="./plugins/iscroll/src/iscroll.js"></script>
 	<script type="text/javascript" src="./plugins/dotdotdot/jquery.dotdotdot.js"></script>
 	<script type="text/javascript" src="./plugins/jquery-ui-1.10.3.custom/js/jquery-ui-1.10.3.custom.min.js"></script>
+	<script type="text/javascript" src="./plugins/jquery-ui-1.10.3.custom/development-bundle/ui/i18n/jquery.ui.datepicker-pt-BR.js"></script>
 	<script type="application/javascript" src="./js/jquery.touchwipe.min.js"></script>
 	<script type="application/javascript" src="./js/general.js"></script>
 	<script type="text/javascript">
+
+		var global_date;
 
 		jQuery(function($)
 		{
 			$('#menu').html(new EJS({url: './templates/menu.ejs'}).render());
 			$('#scroller').html(new EJS({url: './templates/agenda-calendario.ejs'}).render());
-			$('#eventsList').html(new EJS({url: './templates/agenda-eventos-vazia.ejs'}).render());
-			$('#menu #mainMenu li').removeClass('selected');
-			$('#menu #mainMenu li.calendar').addClass('selected');
-
-			var meses = ["Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"];
-			var dias = ["DOM", "SEG", "TER", "QUA", "QUI", "SEX", "SAB"];
-
 			$('#agenda').datepicker(
 			{
+				dayNamesShort: $.datepicker.regional[ "pt-BR" ].dayNamesShort,
+				dayNames: $.datepicker.regional[ "pt-BR" ].dayNames,
+				monthNamesShort: $.datepicker.regional[ "pt-BR" ].monthNamesShort,
+				monthNames: $.datepicker.regional[ "pt-BR" ].monthNames,
 				autoSize: true,
 				inline: true,
 				nextText: '>',
 				prevText: '<',
-				monthNames: meses,
-				dayNamesMin: dias,
-				minDate: 0,
-				dateFormat: 'dd/mm/yy',
+				// minDate: 0,
+				dateFormat: 'DD, dd/mm/yy',
 				onSelect: function(date, obj)
 				{
+					global_date = date;
+
 					if ($('body').hasClass('smartphone'))
+					{
 						$('#eventsList').html(new EJS({url: './templates/agenda-eventos.ejs'}).render());
+						$('#events').on('click', 'a', function (event)
+						{
+							var template = $(this).prop('href');
+
+							$('#scroller').html(new EJS({url: template}).render());
+
+							if (!$(this).hasClass('see_all'))
+								$('#contentTitle').text($(this).find('span').text());
+							else
+							{
+								$('#contentTitle').text(global_date);
+								$('#eventsTable').on('click', 'a', function (event)
+								{
+									var template = $(this).prop('href');
+										
+									$('#scroller').html(new EJS({url: template}).render());
+									$('#contentTitle').text($(this).text());
+
+									scrollerRefresh();
+
+									return false;
+								});
+							}
+							
+							scrollerRefresh();
+
+							return false;
+						});
+					}
+					else
+					{
+						$('#scrollerDetail').html(new EJS({url: './templates/agenda-eventos-completa.ejs'}).render());
+						$('#contentDetailTitle').text(date);
+						$('#eventsTable').on('click', 'a', function (event)
+						{
+							var template = $(this).prop('href');
+							var title,
+								panel;
+
+							if ($('body').hasClass('smartphone'))
+							{
+								panel = $('#scroller');
+								title = $('#contentTitle');
+							}
+							else
+							{
+								panel = $('#scrollerDetail');
+								title = $('#contentDetailTitle');
+							}
+
+							panel.html(new EJS({url: template}).render());
+							title.text($(this).text());
+							scrollerRefresh();
+
+							return false;
+						});
+					}
 
 					scrollerRefresh();
 				}
-
 			});
 
-			// $('#agenda').glDatePicker(
-			// {
-			// 	cssName: 'flatwhite',
-			// 	showAlways: true,
-			// 	prevArrow: '<',
-			// 	nextArrow: '>',
-			// 	zIndex: 999
-			// });
 
-			// scrollerRefresh();
+			if ($('body').hasClass('smartphone'))
+				$('#eventsList').html(new EJS({url: './templates/agenda-eventos-vazia.ejs'}).render());
+			else
+			{
+				$('#scrollerDetail').html(new EJS({url: './templates/agenda-eventos-completa-vazia.ejs'}).render());
+				$('#contentDetailTitle').text($.datepicker.formatDate('DD, dd/mm/yy', new Date()));
+			}
 
-			// $('#contextMenu').on('click', 'a', function () 
-			// {
-			// 	$('#scroller').html(new EJS({url: $(this).prop('href')}).render());
-			// 	$('#contentTitle').text($(this).text());
+			$('#menu #mainMenu li').removeClass('selected');
+			$('#menu #mainMenu li.calendar').addClass('selected');
 
-			// 	$('#contactsList').on('click', 'a', function (event)
-			// 	{
-			// 		init($(this), event);
-			// 	});
+			$('#contextMenu').on('click', 'a', function () 
+			{
+				var template = $(this).prop('href');
+				var title,
+					panel;
 
-			// 	$('#contextMenu').addClass('hidden');
-			// 	scrollerRefresh();
+				if ($('body').hasClass('smartphone'))
+				{
+					panel = $('#scroller');
+					title = $('#contentTitle');
+				}
+				else
+				{
+					panel = $('#scrollerDetail');
+					title = $('#contentDetailTitle');
+				}
 
-			// 	return false;
-			// });
+				panel.html(new EJS({url: template}).render());
+				title.text($(this).text());
+				scrollerRefresh();
 
-			// $('#contactsList').on('click', 'a', function (event)
-			// {
-			// 	return init($(this), event);
-			// });
+				$('#contextMenu').addClass('hidden');
 
+				return false;
+			});
 		});
-
-		// function init(obj, event)
-		// {
-		// 	event.preventDefault();
-
-		// 	var template = obj.prop('href');
-		// 	var title,
-		// 		panel;
-
-		// 	if ($('body').hasClass('smartphone'))
-		// 	{
-		// 		panel = $('#scroller');
-		// 		title = $('#contentTitle');
-		// 	}
-		// 	else
-		// 	{
-		// 		panel = $('#scrollerDetail');
-		// 		title = $('#contentDetailTitle');
-		// 	}
-
-		// 	panel.html(new EJS({url: template}).render());
-		// 	title.text(obj.find('.name').text());
-		// 	scrollerRefresh();
-
-		// 	return false;
-		// }
 
 	</script>
 

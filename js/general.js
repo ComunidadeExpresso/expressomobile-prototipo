@@ -153,7 +153,9 @@ jQuery(function ($)
 	// Update scrollbars in all screen resizes
 	$(window).on('resize', function() 
 	{
-		// deviceType($(window).width() < 500);				
+		// deviceType($(window).width() < 500);		
+
+		deviceType($(window).width() >= 720 || $(window).height() >= 720);		
 
 		$('body').height($(this).height() - top);
 		$('#wrapper').css('top', top + search);
