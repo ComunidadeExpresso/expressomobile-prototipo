@@ -52,14 +52,15 @@ body #page .main #content dl dd ul li input.check { float: right; margin-top: 18
 body #page .main #content dl dd ul li a { text-decoration: none; color: #777777; font-weight: bold; }
 
 body #page .main #contentDetail { width: 60%; height: 100%; position: relative; font-size: 19px; margin-right: -1px; }
+
 /*body #page .main #contentDetail #scrollerDetail { padding: 20px; }*/
 body #page .main .container { position: absolute; top: 53px; right: 0; left: 0; bottom: 0; background: none repeat scroll 0 0 #FFFFFF; }
 body.smartphone #page .main #contentDetail { display: none; }
 
 /** Busca **/
-body #page .main #content .searchArea { margin: 0 5px; padding: 0; }
-body #page .main #content .searchArea input { width: 93%; border-radius: 15px 15px 15px 15px; min-height: 35px; background-color: #FFFFFF; border: 1px solid #CCCCCC; padding: 0 3%; }
-body #page .main #content .searchArea input:focus { border: 1px solid #3A87AD; }
+body #page .main .searchArea { margin: 0 5px; padding: 0; }
+body #page .main .searchArea input { width: 93%; border-radius: 15px 15px 15px 15px; min-height: 35px; background-color: #FFFFFF; border: 1px solid #CCCCCC; padding: 0 3%; }
+body #page .main .searchArea input:focus { border: 1px solid #3A87AD; }
 
 /** Menu **/
 body #menu { width: 50%; height: 100%; position: absolute; margin-top: -53px; background: url("../images/bg.png"); display: none; z-index: 9999; }
@@ -201,6 +202,14 @@ body #page .main #agenda .ui-datepicker .ui-datepicker-calendar tr td.ui-datepic
 	body form#addEvent ol li.participants a { text-decoration: none; margin-left: 10px; color: #3A87AD; }
 	body form#addEvent ol li.participants ol { margin: 10px 0; }
 	body form#addEvent ol li.participants ol li { margin: 10px 0; }
+
+	/** Adicionar participantes **/
+	body #page .main #contentDetail dl#participantsList { margin-top: 1px;  }
+	body #page .main dl#participantsList dt { font-size: 16px; color: #FFFFFF; padding: 10px; border-bottom: 1px #FFFFFF solid; font-weight: bold; background-color: #3A87AD; }
+	body #page .main dl#participantsList dd ul li { vertical-align: middle; height: 50px; line-height: 50px; padding: 0 10px; color: #777777; border-bottom: 1px solid #CCCCCC; border-top: 1px solid #FFFFFF; font-size: 14px; text-align: left; }
+	body #page .main dl#participantsList dd ul li input.check { float: right; margin-top: 18px; }
+	body #page .main dl#participantsList dd ul li a { text-decoration: none; color: #777777; font-weight: bold; }
+
 
 
 /** Pull down styles **/

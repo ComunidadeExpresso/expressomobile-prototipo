@@ -77,6 +77,7 @@
 		jQuery(function($)
 		{
 			$('#menu').html(new EJS({url: './templates/menu.ejs'}).render());
+			// $('#scroller').html(new EJS({url: './templates/agenda-adicionar-participantes.ejs'}).render());
 			$('#scroller').html(new EJS({url: './templates/agenda-calendario.ejs'}).render());
 			$('#agenda').datepicker(
 			{
@@ -164,8 +165,8 @@
 				$('#eventsList').html(new EJS({url: './templates/agenda-eventos-vazia.ejs'}).render());
 			else
 			{
-				// $('#scrollerDetail').html(new EJS({url: './templates/agenda-formulario.ejs'}).render());
-				$('#scrollerDetail').html(new EJS({url: './templates/agenda-eventos-completa-vazia.ejs'}).render());
+				$('#scrollerDetail').html(new EJS({url: './templates/agenda-adicionar-participantes.ejs'}).render());
+				// $('#scrollerDetail').html(new EJS({url: './templates/agenda-eventos-completa-vazia.ejs'}).render());
 				$('#contentDetailTitle').text($.datepicker.formatDate('DD, dd/mm/yy', new Date()));
 			}
 
@@ -191,9 +192,43 @@
 
 				panel.html(new EJS({url: template}).render());
 				title.text($(this).text());
-				scrollerRefresh();
-
+				
 				$('#contextMenu').addClass('hidden');
+				$('li.participants').on('click', 'a', function ()
+				{
+					var template = $(this).prop('href');
+					var title,
+						panel,
+						container;
+
+					if ($('body').hasClass('smartphone'))
+					{
+						panel = $('#scroller');
+						title = $('#contentTitle');
+						container = $('#wrapper');
+					}
+					else
+					{
+						panel = $('#scrollerDetail');
+						title = $('#contentDetailTitle');
+						container = $('#wrapperDetail');
+					}
+
+					panel.html(new EJS({url: template}).render());
+					title.text($(this).text()).after('<form action="#" class="searchArea"><input type="text" value="" placeholder="Procurar Por:" /></form>');
+
+					var top = $('.top').outerHeight(true);
+					var search = $('.searchArea').outerHeight(true) == null ? 0 : $('.searchArea').outerHeight(true);
+					
+					$('body').height($(window).height() - top);
+					container.css('top', top + search);
+
+					scrollerRefresh();
+
+					return false;
+				});
+				
+				scrollerRefresh();
 
 				return false;
 			});
