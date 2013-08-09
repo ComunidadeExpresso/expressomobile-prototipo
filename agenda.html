@@ -164,6 +164,7 @@
 				$('#eventsList').html(new EJS({url: './templates/agenda-eventos-vazia.ejs'}).render());
 			else
 			{
+				// $('#scrollerDetail').html(new EJS({url: './templates/agenda-formulario.ejs'}).render());
 				$('#scrollerDetail').html(new EJS({url: './templates/agenda-eventos-completa-vazia.ejs'}).render());
 				$('#contentDetailTitle').text($.datepicker.formatDate('DD, dd/mm/yy', new Date()));
 			}

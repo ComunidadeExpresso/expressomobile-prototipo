@@ -14,33 +14,48 @@
 		<li>
 			<select name="categoria">
 				<option>Categoria</option>
+				<option>Categoria 1</option>
+				<option>Categoria 2</option>
+				<option>Categoria 3</option>
 			</select>
 		</li>
 		<li>
 			<input type="text" name="localizacao" id="localizacao" placeholder="Localização" />
 		</li>
 		<li class="date">
-			<ul>
+			<ol>
 				<li><input type="text" name="data_ini" id="data_ini" placeholder="Data inicial" /></li>
 				<li><input type="text" name="hora_ini" id="hora_ini" placeholder="Hora inicial" /></li>
-			</ul>
+			</ol>
 		</li>
 
 		<li class="date">
-			<ul>
+			<ol>
 				<li><input type="text" name="data_fim" id="data_fim" placeholder="Data final" /></li>
 				<li><input type="text" name="hora_fim" id="hora_fim" placeholder="Hora final" /></li>
-			</ul>
+			</ol>
 		</li>
 		<li class="participants">
 			<h4>Participantes:</h4>
 			<a href="#" title="Adicionar participantes">Adicionar participantes</a>
-			<ul>
-				<li><input type="checkbox" name="participantes[]" value="1" checked="checked" /> Alaor</li>
-				<li><input type="checkbox" name="participantes[]" value="2" checked="checked" /> Bastiao</li>
-				<li><input type="checkbox" name="participantes[]" value="3" checked="checked" /> Estevao</li>
-				<li><input type="checkbox" name="participantes[]" value="4" checked="checked" /> Doroteia</li>
-			</ul>
+			<ol>
+				<li>
+					<input id="participante_1" type="checkbox" class="css-checkbox" name="participantes[]" value="1" checked="checked" /> 
+					<label for="participante_1" class="css-label">Alaor</label>
+				</li>
+				<li>
+					<input id="participante_2" type="checkbox" class="css-checkbox" name="participantes[]" value="2" checked="checked" /> 
+					<label for="participante_2" class="css-label">Bastiao</label>
+				</li>
+				<li>
+					<input id="participante_3" type="checkbox" class="css-checkbox" name="participantes[]" value="3" checked="checked" /> 
+					<label for="participante_3" class="css-label">Estevao</label>
+				</li>
+				<li>
+					<input id="participante_4" type="checkbox" class="css-checkbox" name="participantes[]" value="4" checked="checked" /> 
+					<label for="participante_4" class="css-label">Doroteia</label>
+				</li>
+			</ol>
 		</li>
 		<li>
 			<select name="prioridade">
